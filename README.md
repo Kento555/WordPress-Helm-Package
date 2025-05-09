@@ -10,6 +10,7 @@ helm lint ./wordpress-chart
 
 # Use this directly for customize Helm Chart
 helm install wp-release ./wordpress-chart -n ws-wp-activity
+helm upgrade --install wp-release ./wordpress-chart -n ws-wp-activity
 
 # Create Helm Chart
 helm create wordpress-chart
@@ -62,3 +63,13 @@ Results:
 
 6. Login:
 ![alt text](image-5.png)   
+
+# After update with mysql secret varaible then
+ helm upgrade --install wp-release ./wordpress-chart -n ws-wp-activity
+
+
+Secret:         
+ ![alt text](image-6.png)   
+ ![alt text](image-7.png)   
+ Disable Decode:   
+ ![alt text](image-8.png)   

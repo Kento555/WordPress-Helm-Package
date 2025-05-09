@@ -3,3 +3,5 @@ mysql:
   database: wordpressdb
   user: wpuser
   password: wppass123
+wordpress:
+  image: wordpress:6.2.1-apache
