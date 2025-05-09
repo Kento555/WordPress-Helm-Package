@@ -73,3 +73,41 @@ Secret:
  ![alt text](image-7.png)   
  Disable Decode:   
  ![alt text](image-8.png)   
+
+ ![alt text](image-9.png)
+
+ # If db instance has been deployed, then explore the resources in namespace first.
+
+ 1. List all resource types (e.g., pods, secrets, services)
+ kubectl get pods -n ws-wp-activity
+ kubectl get secrets -n ws-wp-activity
+ kubectl get svc -n ws-wp-activity
+
+2. Get full YAML of a resource
+kubectl get secret mysql-secret -n ws-wp-activity -oyaml
+![alt text](image-10.png)   
+
+3. Extract a specific field from a secret (e.g., DB password)
+kubectl get secret mysql-secret -n ws-wp-activity \
+  -ojsonpath='{.data.password}' | base64 -d
+![alt text](image-11.png)   
+
+4. Test database connectivity from within the cluster
+kubectl exec -it deploy/mysql -n ws-wp-activity -- bash
+![alt text](image-12.png)   
+Command explanation:   
+![alt text](image-14.png)   
+
+Then inside the container:
+mysql -h <db_hostname> -u <db_username> -p<db_password>
+mysql -h localhost -u wpuser -pwppass123
+
+Or, from another pod like WordPress:
+mysql -h mysql -u wpuser -pwppass123
+![alt text](image-13.png)   
+
+SHOW DATABASES;
+![alt text](image-15.png)   
+
+Use different DB:
+![alt text](image-16.png)   
