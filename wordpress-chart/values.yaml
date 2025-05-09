@@ -1,0 +1,5 @@
+mysql:
+  rootPassword: rootpass123
+  database: wordpressdb
+  user: wpuser
+  password: wppass123
